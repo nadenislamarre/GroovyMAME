@@ -60,6 +60,8 @@ class machine_info;
 enum
 {
 	SLIDER_ID_VOLUME                = 0,
+	SLIDER_ID_FRAMEDELAY,
+	SLIDER_ID_VSYNC_OFFSET,
 	SLIDER_ID_MIXERVOL,
 	SLIDER_ID_MIXERVOL_LAST         = SLIDER_ID_MIXERVOL + SLIDER_DEVICE_SPACING,
 	SLIDER_ID_ADJUSTER,
@@ -314,12 +316,17 @@ private:
 	void exit();
 	void config_load(config_type cfg_type, util::xml::data_node const *parentnode);
 	void config_save(config_type cfg_type, util::xml::data_node *parentnode);
+	void sliders_load(config_type cfg_type, util::xml::data_node const *parentnode);
+	void sliders_save(config_type cfg_type, util::xml::data_node *parentnode);
+	void sliders_apply(void);
 	std::unique_ptr<slider_state> slider_alloc(int id, const char *title, int32_t minval, int32_t defval, int32_t maxval, int32_t incval, void *arg);
 
 	// slider controls
 	virtual int32_t slider_changed(running_machine &machine, void *arg, int id, std::string *str, int32_t newval) override;
 
 	int32_t slider_volume(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_framedelay(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_vsync_offset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_mixervol(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_adjuster(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_overclock(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
@@ -347,6 +354,7 @@ private:
 	#endif
 
 	std::vector<std::unique_ptr<slider_state>> m_sliders;
+	std::vector<std::unique_ptr<slider_state>> m_sliders_saved;
 };
 
 
