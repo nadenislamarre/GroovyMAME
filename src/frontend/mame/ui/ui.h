@@ -62,6 +62,7 @@ enum
 {
 	SLIDER_ID_VOLUME                = 0,
 	SLIDER_ID_FRAMEDELAY,
+	SLIDER_ID_VSYNC_OFFSET,
 	SLIDER_ID_MIXERVOL,
 	SLIDER_ID_MIXERVOL_LAST         = SLIDER_ID_MIXERVOL + SLIDER_DEVICE_SPACING,
 	SLIDER_ID_ADJUSTER,
@@ -323,6 +324,7 @@ private:
 
 	int32_t slider_volume(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_framedelay(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_vsync_offset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_mixervol(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_adjuster(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	int32_t slider_overclock(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
