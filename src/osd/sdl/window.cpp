@@ -623,6 +623,7 @@ void sdl_window_info::update()
 int sdl_window_info::complete_create()
 {
 	osd_dim temp(0,0);
+	bool mode_setting = downcast<sdl_options &>(machine().options()).mode_setting();
 
 	// clear out original mode. Needed on OSX
 	if (fullscreen())
@@ -631,7 +632,7 @@ int sdl_window_info::complete_create()
 		temp = monitor()->position_size().dim();
 
 		// if we're allowed to switch resolutions, override with something better
-		if (video_config.switchres)
+		if (video_config.switchres && !mode_setting)
 			temp = pick_best_mode();
 	}
 	else if (m_windowed_dim.width() > 0)
@@ -686,7 +687,7 @@ int sdl_window_info::complete_create()
 	// create the SDL window
 	// soft driver also used | SDL_WINDOW_INPUT_GRABBED | SDL_WINDOW_MOUSE_FOCUS
 	m_extra_flags |= (fullscreen() ?
-			SDL_WINDOW_BORDERLESS | SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_FULLSCREEN : SDL_WINDOW_RESIZABLE);
+			SDL_WINDOW_BORDERLESS | SDL_WINDOW_INPUT_FOCUS | (mode_setting? SDL_WINDOW_FULLSCREEN_DESKTOP : SDL_WINDOW_FULLSCREEN) : SDL_WINDOW_RESIZABLE);
 
 //#if defined(SDLMAME_WIN32)
 	SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
@@ -714,7 +715,7 @@ int sdl_window_info::complete_create()
 
 	set_platform_window(sdlwindow);
 
-	if (fullscreen() && video_config.switchres)
+	if (fullscreen() && video_config.switchres && !mode_setting)
 	{
 		SDL_DisplayMode mode;
 		//SDL_GetCurrentDisplayMode(window().monitor()->handle, &mode);
