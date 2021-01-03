@@ -270,6 +270,8 @@ public:
 
 	virtual std::unique_ptr<osd_midi_device> create_midi_device() override { return m_midi->create_midi_device(); }
 
+	virtual const char *switchres_mode(int i) override { return m_switchres.display_mode_to_txt(i); }
+
 	// FIXME: everything below seems to be osd specific and not part of
 	//        this INTERFACE but part of the osd IMPLEMENTATION
 
