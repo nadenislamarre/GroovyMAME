@@ -90,7 +90,7 @@ const options_entry osd_options::s_option_entries[] =
 
 	// full screen options
 	{ nullptr,                                nullptr,          OPTION_HEADER,    "OSD FULL SCREEN OPTIONS" },
-	{ OSDOPTION_SWITCHRES,                    "0",              OPTION_BOOLEAN,   "enable resolution switching" },
+	{ OSDOPTION_SWITCHRES,                    "1",              OPTION_BOOLEAN,   "enable resolution switching" },
 	{ OSDOPTION_SWITCHRES_BACKEND,            "auto",           OPTION_STRING,    "Switchres backend to use (adl, ati, powerstrip, xrandr, drmkms)" },
 	{ OSDOPTION_MODE_SETTING,                 "0",              OPTION_BOOLEAN,   "force resolution switching through Switchres backend" },
 	{ OSDOPTION_MODELINE_GENERATION ";ml",    "1",              OPTION_BOOLEAN,   "Automatic generation of modelines based on the specified monitor type" },
@@ -106,7 +106,7 @@ const options_entry osd_options::s_option_entries[] =
 	{ OSDOPTION_V_SHIFT_CORRECT,              "0",              OPTION_INTEGER,   "Apply vertical shift correction for multi-standard consumer CRT TVs"},
 	{ OSDOPTION_PIXEL_PRECISION,              "1",              OPTION_BOOLEAN,   "Calculate horizontal values with 1-pixel precision to improve horizontal centering" },
 	{ OSDOPTION_SYNC_REFRESH_TOLERANCE ";srt","2.0",            OPTION_FLOAT,     "Maximum refresh difference, in Hz, allowed in order to synchronize" },
-	{ OSDOPTION_AUTOSYNC,                     "0",              OPTION_BOOLEAN,   "automatically enable syncrefresh if refresh difference is below syncrefresh_tolerance" },
+	{ OSDOPTION_AUTOSYNC,                     "1",              OPTION_BOOLEAN,   "automatically enable syncrefresh if refresh difference is below syncrefresh_tolerance" },
 	{ OSDOPTION_SCREEN_COMPOSITING,           "0",              OPTION_BOOLEAN,   "Readjust relative screen positions of a multi-display setup after mode switching (Linux)" },
 	{ OSDOPTION_SCREEN_REORDERING,            "0",              OPTION_BOOLEAN,   "Reallocates desktop multiple screens stacked vertically, so super-resolutions fit (Linux)" },
 	{ OSDOPTION_ALLOW_HW_REFRESH,             "0",              OPTION_BOOLEAN,   "Allow on-the-fly mode addition (Windows)" },
@@ -125,7 +125,7 @@ const options_entry osd_options::s_option_entries[] =
 	{ OSDOPTION_CRT_RANGE "9",                "auto",           OPTION_STRING,    "Add custom CRT range" },
 
 	{ nullptr,                                nullptr,          OPTION_HEADER,    "OSD ACCELERATED VIDEO OPTIONS" },
-	{ OSDOPTION_FILTER ";glfilter;flt",       "1",              OPTION_BOOLEAN,   "use bilinear filtering when scaling emulated video" },
+	{ OSDOPTION_FILTER ";glfilter;flt",       "0",              OPTION_BOOLEAN,   "use bilinear filtering when scaling emulated video" },
 	{ OSDOPTION_PRESCALE "(1-8)",             "1",              OPTION_INTEGER,   "scale emulated video by this factor before applying filters/shaders" },
 
 #if USE_OPENGL
