@@ -1424,7 +1424,6 @@ LRESULT CALLBACK win_window_info::video_window_proc(HWND wnd, UINT message, WPAR
 		 * should be used.
 		 */
 		window->m_monitor->refresh();
-		window->m_monitor->update_resolution(LOWORD(lparam), HIWORD(lparam));
 		break;
 
 	// set focus: if we're not the primary window, switch back
