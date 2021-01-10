@@ -1732,6 +1732,7 @@ void cli_frontend::display_help(const char *exename)
 			"%3$s v%2$s\n"
 			"%5$s\n"
 			"\n"
+			"GroovyMAME - Switchres version %s\n"
 			"This software reproduces, more or less faithfully, the behaviour of a wide range\n"
 			"of machines. But hardware is useless without software, so images of the ROMs and\n"
 			"other media which run on that hardware are also required.\n"
@@ -1748,5 +1749,6 @@ void cli_frontend::display_help(const char *exename)
 			build_version,
 			emulator_info::get_appname(),
 			emulator_info::get_configname(),
-			emulator_info::get_copyright_info());
+			emulator_info::get_copyright_info(),
+			SWITCHRES_VERSION);
 }
