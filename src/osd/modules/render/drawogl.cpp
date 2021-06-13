@@ -1508,6 +1508,8 @@ int renderer_ogl::draw(const int update)
 	if (video_config.sync_mode == 2 || video_config.sync_mode == 3)
 		m_gl_context->SwapBuffer();
 
+	glFinish();
+
 	return 0;
 }
 
