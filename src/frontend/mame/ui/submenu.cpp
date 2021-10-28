@@ -256,7 +256,7 @@ void submenu::handle()
 			{
 			case OPTION_BOOLEAN:
 				changed = true;
-				sm_option.options->set_value(sm_option.name, !strcmp(sm_option.entry->value(),"1") ? "0" : "1", OPTION_PRIORITY_CMDLINE);
+				sm_option.options->set_value(sm_option.name, !strcmp(sm_option.entry->value(),"1") ? false : true, OPTION_PRIORITY_CMDLINE);
 				break;
 			case OPTION_INTEGER:
 				if (menu_event->iptkey == IPT_UI_LEFT || menu_event->iptkey == IPT_UI_RIGHT)
