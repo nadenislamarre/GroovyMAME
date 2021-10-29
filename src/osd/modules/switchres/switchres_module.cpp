@@ -339,7 +339,7 @@ void switchres_module::set_option(const char *option_ID, bool state)
 	#endif
 
 	//options.set_value(option_ID, state, OPTION_PRIORITY_SWITCHRES);
-	options.set_value(option_ID, state, OPTION_PRIORITY_NORMAL + 1);
+	options.set_value(option_ID, state, OPTION_PRIORITY_NORMAL + 2);
 	osd_printf_verbose("SwitchRes: Setting option -%s%s\n", options.bool_value(option_ID)?"":"no", option_ID);
 }
 
